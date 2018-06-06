@@ -20,7 +20,7 @@ export default {
     return {
       uName: "",
       pwd: "",
-      loading:false
+      loading: false
     };
   },
   methods: {
@@ -28,9 +28,9 @@ export default {
       let _this = this;
       return {
         login: async () => {
-          this.loading = true
+          this.loading = true;
           let data = await this.$ajax({
-            method: "post",
+            method: "POST",
             url: `/api/shuzhi/login.html`,
             data: qs.stringify({
               uName: this.uName,
@@ -40,10 +40,10 @@ export default {
           this.loading = false;
           if (data.success) {
             this.$Message.success("登录成功");
+            let t = data.data.token;
             _cookie.setCookies({ t }, 30);
             _localStorage.setLocalStorage("user", data.data);
             this.$router.push("/home");
-            let t = data.data.token;
           } else {
             this.$Message.error(data.message || "登录失败");
           }

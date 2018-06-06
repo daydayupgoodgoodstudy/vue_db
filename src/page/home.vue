@@ -7,6 +7,7 @@
   overflow: hidden;
 }
 .layout-header-bar {
+  position: relative;
   background: #fff;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
@@ -53,10 +54,22 @@
   height: 100%;
 }
 
-a{ 
-text-decoration:none; 
-color:#fff; 
-} 
+a {
+  text-decoration: none;
+  color: #fff;
+}
+.Ava {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.ava_select a {
+  display: block;
+  color: #5b6270;
+  text-align: center;
+  font-size: 16px;
+}
 </style>
 <template>
     <div class="layout home_layout">
@@ -76,8 +89,8 @@ color:#fff;
                     <Submenu name="2">
                         <template  slot="title">
                              <Icon type="ios-analytics"></Icon>
-                            运营管理
-                        </template>  
+                            <span>运营管理</span> 
+                        </template>
                         <MenuItem name="2-1">
                             <Icon type="ios-navigate"></Icon>
                             <router-link to="/home/message" ><span>消息管理</span></router-link>
@@ -99,7 +112,14 @@ color:#fff;
             </Sider>
             <Layout>
                 <Header :style="{padding: 0}" class="layout-header-bar">
-                    <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '20px 20px 0'}" type="navicon-round" size="24"></Icon>
+                <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '20px 20px 0'}" type="navicon-round" size="24"></Icon>
+                <Poptip class="Ava" content="content" placement="bottom-end">
+                    <Avatar  src="https://i.loli.net/2017/08/21/599a521472424.jpg" />
+                    <div class="api ava_select" slot="content">
+                      <router-link to="/home/changePwd" ><span>修改密码</span></router-link>
+                      <a @click="logout()"><span>退出登录</span></a>
+                    </div>
+                </Poptip>
                 </Header>
                 <Content :style="{margin: '20px', background: '#fff', minHeight: '260px'}">
                         <router-view></router-view>
@@ -109,10 +129,12 @@ color:#fff;
     </div>
 </template>
 <script>
+import { _cookie, _localStorage } from "@/utils/cookie";
+
 export default {
   data() {
     return {
-        open:[1,2],
+      open: [1, 2],
       isCollapsed: false
     };
   },
@@ -127,6 +149,15 @@ export default {
   methods: {
     collapsedSider() {
       this.$refs.side1.toggleCollapse();
+    },
+    async logout() {
+      let data = await this.$ajax({
+        method: "post",
+        url: `/api/shuzhi/doLoginOut.html`
+      });
+      _cookie.delCookie("t");
+      _localStorage.clearLocalStorage("user");
+      this.$router.push("/login");
     }
   }
 };

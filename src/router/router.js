@@ -34,7 +34,11 @@ const routes = [
             {
                 path: "dataserver",
                 component: () => import('@/page/dataserver')
-            }
+            },
+            {
+                path: "changepwd",
+                component: () => import('@/page/changepwd')
+            },
         ]
     },
     {
@@ -55,11 +59,19 @@ const router = new Router({ routes });
 
 //除了 /  /login 所有路由请求都会判断是否有t 清除 localStorage 没有跳转/
 router.beforeEach((to, from, next) => {
-    if (!['/', '/login'].includes(to.path) && !_cookie.getCookie('t')) {
-        _localStorage.clearLocalStorage()
-        return next('/');
-    }
-    next();
+    if(['/', '/login'].includes(to.path)){
+        _cookie.delCookie('t');
+        _localStorage.clearLocalStorage();
+        return next()
+    }else{
+        if( _cookie.getCookie('t')){
+            return  next();
+        }else{
+            _cookie.delCookie('t');
+            _localStorage.clearLocalStorage();
+            return next('/');
+        }
+    }   
 })
 
 export {

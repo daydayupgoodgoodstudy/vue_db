@@ -3,7 +3,9 @@ import { _cookie } from '@/utils/cookie';
 
 axios.interceptors.request.use(function (config) {
     // 访问网络时加载loading,防止用户多次操作
-    config.headers = { 't': _cookie.getCookie('t') }
+    //这傻逼问题搞了我1个小时 记录一下
+    //日 config.headers = { t: _cookie.getCookie('t') } 
+    config.headers.t =  _cookie.getCookie('t') 
     return config;
 }, function (error) {
     return Promise.reject(error);
