@@ -12,6 +12,8 @@ export default {
             a:111
         }
     },
+
+    
     components:{
         Login:Login,
     },
