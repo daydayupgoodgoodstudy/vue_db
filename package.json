@@ -1,39 +1,42 @@
 {
-  "name": "start_vue",
+  "name": "vue_db",
   "version": "1.0.0",
-  "description": "",
+  "description": "vue架子",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --open --host 0.0.0.0",
-    "build": "webpack"
+    "dev": "webpack-dev-server --config ./build/webpack.config.js --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daydayupgoodgoodstudy/vue_db.git"
   },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daydayupgoodgoodstudy/vue_db/issues"
+  },
+  "homepage": "https://github.com/daydayupgoodgoodstudy/vue_db#readme",
   "dependencies": {
-    "axios": "^0.18.0",
-    "babel-loader": "^7.1.4",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-stage-0": "^6.24.1",
-    "babel-preset-stage-1": "^6.24.1",
-    "file-loader": "^1.1.11",
-    "iview": "^2.14.1",
-    "md5": "^2.2.1",
-    "qs": "^6.5.2",
-    "style-loader": "^0.21.0",
-    "vue": "^2.5.16",
-    "vue-loader": "^15.2.2",
-    "vue-router": "^3.0.1",
-    "vue-style-loader": "^4.1.0",
-    "vuex": "^3.0.1"
+    "@babel/polyfill": "^7.7.0",
+    "axios": "^0.19.0",
+    "core-js": "^3.4.3",
+    "vue": "^2.6.10",
+    "vue-router": "^3.1.3",
+    "vue-template-compiler": "^2.6.10"
   },
   "devDependencies": {
-    "babel-plugin-component": "^1.1.1",
-    "babel-preset-env": "^1.7.0",
-    "css-loader": "^0.28.11",
-    "vue-template-compiler": "^2.5.16",
-    "webpack": "^4.9.1",
-    "webpack-cli": "^2.1.4",
-    "webpack-dev-server": "^3.1.4"
+    "@babel/cli": "^7.7.4",
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "mockjs": "^1.1.0",
+    "style-loader": "^1.0.0",
+    "vue-loader": "^15.7.2",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
   }
 }
