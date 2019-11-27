@@ -1,12 +1,12 @@
 <template>
     <div class="home">
-        <div class="layout-sider">
+        <!-- <div class="layout-sider">
             <div class="layout-sider-children"></div>
         </div>
-        <div class="layout"></div>
-        <!-- <span @click="loginOut">退出</span>
+        <div class="layout"></div> -->
+        <span @click="loginOut">退出</span>
         <div>姓名:{{userinfo.name}}</div>
-        <img :src="userinfo.avator" alt=""> -->
+        <img :src="userinfo.avator" alt="">
 
     </div>
 </template>
