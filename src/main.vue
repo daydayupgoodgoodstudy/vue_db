@@ -16,7 +16,7 @@ export default {
         Login:Login,
     },
     created() {
-
+        console.log(this.$route.path,'this$route.path')
 	},
 	mounted() {
     }
